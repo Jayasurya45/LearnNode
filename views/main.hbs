@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{#if editid}}
+    <h1>Edit</h1>
+    <form action="/edit/{{editid}}" method="post">
+<label for="">name:</label>
+<input type="text" name="name" value="{{editdet.name}}" >
+<label for="">age</label>
+<input type="text" name="age" value="{{editdet.age}}">
+<input type="submit" name="submit">
+</form>
+<br><br>
+
+{{else}}
+    <h1>create</h1>
+    <form action="/create" method="post">
+<label for="">name:</label>
+<input type="text" name="name">
+<label for="">age</label>
+<input type="text" name="age">
+<input type="submit" name="submit">
+
+</form>
+<br><br>
+{{/if}}
+
+    <ul>
+    <h1>details</h1>
+   {{#each details}}
+   <li>{{this.name}}--{{this.age}}</li><a href="/?editid={{this._id}}">Edit</a><a href="/?deleteid={{this._id}}">delete</a>
+   {{/each}}
+   </ul>
+</body>
+</html>
